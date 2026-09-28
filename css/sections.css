@@ -377,20 +377,10 @@ body { font-weight: 400; line-height: 1.6; }
 /* Eyebrows: Instrument Sans 500, mayúsculas, 0.12em (tamaño sin cambios) */
 .eyebrow { font-weight: 500; letter-spacing: 0.12em; }
 
-/* Hooks: 1ª línea Instrument Sans 500; 2ª línea Instrument Serif itálica azul.
-   La serif se ve más chica, por eso sube ~10% respecto a la línea en sans. */
+/* Hooks: una sola tipografía (Instrument Sans) en ambas líneas; la 2ª línea
+   se distingue solo por el color de acento (definido en styles.css). */
 .hook { font-weight: 500; letter-spacing: -0.025em; line-height: 1.16; }
-.hook__l2 {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  font-size: 1.1em;
-  line-height: 1.12;
-  margin-top: 0.06em;
-}
-/* máscara de la entrada: el texto sube dentro de un contenedor con overflow hidden
-   (padding/margin evitan recortar descendentes de la itálica) */
+/* máscara de la entrada: el texto sube dentro de un contenedor con overflow hidden */
 .hl { display: block; overflow: hidden; padding-bottom: 0.14em; margin-bottom: -0.14em; }
 .hl > span { display: block; }
 

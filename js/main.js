@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileNav();
   initAnchorScroll();
   initWhatsAppCtas();
-  initCustomCursor();
   initMagneticButtons();
   initHeads();
   initNavSpy();
@@ -119,36 +118,6 @@ function initMobileNav() {
     if (panel.classList.contains("is-open") && !panel.contains(e.target)) setOpen(false);
   });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
-}
-
-/* ---------- Cursor personalizado (solo mouse) ---------- */
-function initCustomCursor() {
-  if (!isFinePointer || prefersReducedMotion) return;
-
-  const cursor = document.getElementById("cursor");
-  if (!cursor) return;
-  document.body.classList.add("cursor-ready");
-
-  let moveX, moveY;
-  if (hasGSAP) {
-    moveX = gsap.quickTo(cursor, "x", { duration: 0.35, ease: "power3" });
-    moveY = gsap.quickTo(cursor, "y", { duration: 0.35, ease: "power3" });
-  }
-
-  window.addEventListener("mousemove", (e) => {
-    if (hasGSAP) {
-      moveX(e.clientX);
-      moveY(e.clientY);
-    } else {
-      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
-    }
-  });
-
-  // Delegación: funciona también con elementos creados después (chat, etc.)
-  const interactive = "a, button, input, label.option-card, .magnetic, .compare";
-  document.addEventListener("mouseover", (e) => {
-    cursor.classList.toggle("is-active", !!e.target.closest(interactive));
-  });
 }
 
 /* ---------- Botones magnéticos ---------- */

@@ -47,7 +47,7 @@ function initFlowStrip() {
   if (!root || !track) return;
 
   const STAGES = [
-    ["Anuncio", "megaphone"], ["Lead", "user-plus"], ["WhatsApp", "message-circle"],
+    ["Anuncio", "megaphone"], ["Landing", "layout-template"], ["Lead", "user-plus"], ["WhatsApp", "message-circle"],
     ["Respuesta automática", "bot"], ["Calificación", "filter"], ["CRM", "database"],
     ["Asesor", "headset"], ["Oferta", "file-text"], ["Venta", "circle-dollar-sign"],
     ["Seguimiento", "refresh-cw"],
