@@ -173,7 +173,7 @@ h1, h2, h3 {
   top: 16px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(780px, calc(100% - 32px));
+  width: min(880px, calc(100% - 32px)); /* 6 enlaces + CTA */
   z-index: 1000;
 }
 .nav__capsule {
@@ -199,6 +199,8 @@ h1, h2, h3 {
   display: flex; flex: 1; justify-content: center; align-items: center; gap: 18px;
   font-size: 13px; color: #4A5572;
 }
+/* pantallas medianas: más compacto para que quepan los 6 enlaces */
+@media (min-width: 900px) and (max-width: 1040px) { .nav__links { gap: 13px; font-size: 12.5px; } }
 .nav__links a { position: relative; padding: 4px 0; white-space: nowrap; transition: color 0.25s ease; }
 .nav__links a::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1.5px;

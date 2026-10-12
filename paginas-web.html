@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Páginas web — IntegroLabs</title>
+<meta name="description" content="Páginas web hechas a la medida para negocios de Latinoamérica y su diáspora: rápidas, pensadas primero para el celular y conectadas a WhatsApp. Primera entrega en menos de 48 horas.">
+
+<link rel="icon" type="image/png" href="assets/logo-integrolabs.png">
+<link rel="apple-touch-icon" href="assets/logo-integrolabs.png">
+
+<script>
+  document.documentElement.classList.add("js");
+  /* Tema: la versión oficial es la clara; solo se usa la oscura si la persona la eligió. Se aplica antes de pintar. */
+  var theme = "light";
+  try { if (localStorage.getItem("il-theme") === "dark") theme = "dark"; } catch (e) {}
+  if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/sections.css">
+<link rel="stylesheet" href="css/paginas-web.css">
+</head>
+<body class="page-portfolio">
+
+<div class="grain" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ============ NAV (mismo menú del sitio + Páginas web) ============ -->
+<header class="nav" id="nav">
+  <div class="nav__capsule">
+    <a href="/" class="nav__logo" aria-label="IntegroLabs — inicio">
+      <img src="assets/logo-integrolabs.png" alt="IntegroLabs" height="28" width="28">
+      <span class="nav__logo-text">IntegroLabs</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Navegación principal">
+      <a href="/#problema">Cómo funciona</a>
+      <a href="/#soluciones">Soluciones</a>
+      <a href="/#solucion">Método</a>
+      <a href="/paginas-web" class="is-current" aria-current="page">Páginas web</a>
+      <a href="/#metodo">Por qué nosotros</a>
+      <a href="/#equipo">Equipo</a>
+    </nav>
+
+    <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navPanel">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a href="#" class="nav__cta js-wa-cta" target="_blank" rel="noopener">Cuéntanos tu caso</a>
+  </div>
+
+  <nav class="nav__panel" id="navPanel" aria-label="Menú móvil">
+    <a href="/#problema">Cómo funciona</a>
+    <a href="/#soluciones">Soluciones</a>
+    <a href="/#solucion">Método</a>
+    <a href="/paginas-web" class="is-current" aria-current="page">Páginas web</a>
+    <a href="/#metodo">Por qué nosotros</a>
+    <a href="/#equipo">Equipo</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero hero--web" id="hero">
+    <div class="hero__body">
+      <div class="hero__content" data-head>
+        <h1 class="eyebrow"><span class="eyebrow__t">Diseño y desarrollo de páginas web</span></h1>
+        <p class="hook hero__hook"><span class="hook__l1"><span class="hl"><span>Cada negocio, su propia página.</span></span></span><span class="hook__l2"><span class="hl"><span>Ninguna sale de una plantilla.</span></span></span></p>
+        <p class="hero__subtitle">
+          Diseñamos sitios rápidos, pensados primero para el celular y conectados
+          a tu WhatsApp. Estos son algunos de los que ya están en línea.
+        </p>
+        <div class="hero__cta">
+          <a href="#" class="btn btn--primary magnetic js-wa-web" target="_blank" rel="noopener">Quiero mi página web</a>
+          <p class="microcopy">Primera entrega en menos de 48 horas, desde que tenemos tu información.</p>
+        </div>
+      </div>
+
+      <!-- Animación: una página web que se arma, recibe un clic y genera un mensaje por WhatsApp.
+           Las fases las marca js/paginas-web.js (initBuildDemo) con clases en .build. -->
+      <div class="build" id="build" aria-hidden="true">
+        <div class="build__browser">
+          <div class="build__bar">
+            <span class="build__dots"><i></i><i></i><i></i></span>
+            <span class="build__url"><span>tunegocio.com</span></span>
+          </div>
+          <div class="build__page">
+            <div class="build__nav">
+              <i class="b b--logo" style="--d:0s"></i>
+              <span class="build__links"><i class="b" style="--d:.1s"></i><i class="b" style="--d:.15s"></i><i class="b" style="--d:.2s"></i></span>
+              <i class="b b--navbtn" style="--d:.25s"></i>
+            </div>
+            <div class="build__hero">
+              <div class="build__copy">
+                <i class="b b--h1" style="--d:.45s"></i>
+                <i class="b b--h1 b--h1s" style="--d:.6s"></i>
+                <i class="b b--p" style="--d:.8s"></i>
+                <i class="b b--p b--ps" style="--d:.9s"></i>
+                <span class="b b--btn" style="--d:1.1s">
+                  <span class="build__cursor"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 3l14 7.5-6.2 1.6L10 18z" fill="currentColor" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+                </span>
+              </div>
+              <div class="b b--img" style="--d:1.3s"><i></i></div>
+            </div>
+            <div class="build__cards">
+              <i class="b b--card" style="--d:1.6s"></i>
+              <i class="b b--card" style="--d:1.75s"></i>
+              <i class="b b--card" style="--d:1.9s"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="build__phone">
+          <div class="build__phone-screen">
+            <i class="b b--h1" style="--d:.7s"></i>
+            <i class="b b--h1 b--h1s" style="--d:.85s"></i>
+            <i class="b b--p" style="--d:1s"></i>
+            <i class="b b--img" style="--d:1.4s"></i>
+            <i class="b b--btn b--btn-full" style="--d:1.7s"></i>
+          </div>
+        </div>
+
+        <span class="build__chip build__chip--time"><i data-icon="timer" data-size="14"></i>Primera versión en &lt; 48 h</span>
+        <span class="build__chip build__chip--wa"><i data-icon="message-circle" data-size="14"></i>Nuevo mensaje por WhatsApp</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROYECTOS ============ -->
+  <section class="section section--bordered" id="proyectos">
+    <div class="section__inner">
+      <div class="section__head" data-head>
+        <div>
+          <h2 class="eyebrow"><span class="eyebrow__t">Nuestro trabajo</span></h2>
+          <p class="hook"><span class="hook__l1"><span class="hl"><span>Proyectos reales, ya en línea.</span></span></span><span class="hook__l2"><span class="hl"><span>Cada uno con su propia identidad.</span></span></span></p>
+        </div>
+        <p class="section__sub">
+          Cada página parte de una pregunta: ¿qué necesita hacer la persona que
+          entra? Agendar, pedir información o escribir por WhatsApp. Puedes
+          visitarlas y recorrerlas tal como las ven sus clientes.
+        </p>
+      </div>
+
+      <div class="cases">
+
+        <!-- 01 · Realtor Punta Cana -->
+        <article class="case reveal" id="caso-realtor">
+          <div class="case__text">
+            <span class="case__num">01</span>
+            <p class="case__kicker">Bienes raíces · Punta Cana, República Dominicana</p>
+            <h3 class="case__title">Zulimar De Azevedo — Realtor en Punta Cana</h3>
+            <p class="case__desc">
+              Sitio para una asesora inmobiliaria que vende propiedades en Punta Cana a
+              compradores que viven en Estados Unidos. Explica cómo comprar a distancia,
+              muestra un catálogo de villas, apartamentos y terrenos, y convierte cada
+              consulta en una conversación por WhatsApp.
+            </p>
+            <ul class="case__points">
+              <li><i data-icon="check" data-size="16"></i>Catálogo filtrable por tipo de propiedad</li>
+              <li><i data-icon="check" data-size="16"></i>Compra remota explicada en cuatro pasos</li>
+              <li><i data-icon="check" data-size="16"></i>Cuestionario corto que termina en WhatsApp</li>
+            </ul>
+            <ul class="sol__tags case__tags">
+              <li>Bienes raíces</li><li>Selector de idioma</li><li>Cuestionario</li>
+            </ul>
+            <div class="case__cta">
+              <a href="https://realto-punta-cana.vercel.app/" class="btn btn--primary magnetic" target="_blank" rel="noopener">
+                Visitar sitio <i data-icon="external-link" data-size="15"></i>
+              </a>
+              <span class="case__url">realto-punta-cana.vercel.app</span>
+            </div>
+          </div>
+
+          <div class="devices" data-devices>
+            <figure class="device device--desktop">
+              <div class="device__bar" aria-hidden="true">
+                <span class="device__dots"><i></i><i></i><i></i></span>
+                <span class="device__url">realto-punta-cana.vercel.app</span>
+              </div>
+              <div class="device__screen">
+                <img src="assets/portafolio/realtor-desktop.jpg" alt="Versión de escritorio del sitio de Zulimar De Azevedo, Realtor en Punta Cana" loading="lazy" width="1440" height="3600">
+              </div>
+              <figcaption class="device__label"><i data-icon="monitor" data-size="13"></i>Escritorio</figcaption>
+            </figure>
+            <figure class="device device--mobile">
+              <div class="device__screen">
+                <img src="assets/portafolio/realtor-mobile.jpg" alt="Versión móvil del sitio de Zulimar De Azevedo, Realtor en Punta Cana" loading="lazy" width="780" height="6800">
+              </div>
+              <figcaption class="device__label"><i data-icon="smartphone" data-size="13"></i>Móvil</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <!-- 02 · Emily Peralta -->
+        <article class="case case--flip reveal" id="caso-emily">
+          <div class="case__text">
+            <span class="case__num">02</span>
+            <p class="case__kicker">Salud mental · Medellín, Colombia</p>
+            <h3 class="case__title">Emily Peralta — Psicóloga y terapeuta Gestalt</h3>
+            <p class="case__desc">
+              Landing para una psicóloga que atiende de forma presencial en Medellín y
+              por videollamada. Un diseño cálido y sereno que acompaña a quien está
+              pensando en pedir ayuda: le permite nombrar lo que siente, conocer el
+              enfoque, saber cómo es la primera sesión y agendar sin rodeos.
+            </p>
+            <ul class="case__points">
+              <li><i data-icon="check" data-size="16"></i>Palabras para que el visitante se identifique</li>
+              <li><i data-icon="check" data-size="16"></i>Primera sesión explicada sin tecnicismos</li>
+              <li><i data-icon="check" data-size="16"></i>Servicios con tarifas claras y agenda directa</li>
+            </ul>
+            <ul class="sol__tags case__tags">
+              <li>Salud mental</li><li>Agenda de citas</li><li>Presencial y virtual</li>
+            </ul>
+            <div class="case__cta">
+              <a href="https://emily-peralta-landing.vercel.app/" class="btn btn--primary magnetic" target="_blank" rel="noopener">
+                Visitar sitio <i data-icon="external-link" data-size="15"></i>
+              </a>
+              <span class="case__url">emily-peralta-landing.vercel.app</span>
+            </div>
+          </div>
+
+          <div class="devices" data-devices>
+            <figure class="device device--desktop">
+              <div class="device__bar" aria-hidden="true">
+                <span class="device__dots"><i></i><i></i><i></i></span>
+                <span class="device__url">emily-peralta-landing.vercel.app</span>
+              </div>
+              <div class="device__screen">
+                <img src="assets/portafolio/emily-desktop.jpg" alt="Versión de escritorio del sitio de la psicóloga Emily Peralta" loading="lazy" width="1440" height="3600">
+              </div>
+              <figcaption class="device__label"><i data-icon="monitor" data-size="13"></i>Escritorio</figcaption>
+            </figure>
+            <figure class="device device--mobile">
+              <div class="device__screen">
+                <img src="assets/portafolio/emily-mobile.jpg" alt="Versión móvil del sitio de la psicóloga Emily Peralta" loading="lazy" width="780" height="6800">
+              </div>
+              <figcaption class="device__label"><i data-icon="smartphone" data-size="13"></i>Móvil</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <!-- 03 · Latin Flowers -->
+        <article class="case reveal" id="caso-flowers">
+          <div class="case__text">
+            <span class="case__num">03</span>
+            <p class="case__kicker">Floristería · Madrid, España</p>
+            <h3 class="case__title">Latín Flowers — Floristería latina en Madrid</h3>
+            <p class="case__desc">
+              Sitio para una floristería latinoamericana en Madrid. Una estética vibrante
+              que refleja la identidad del negocio, un catálogo de arreglos organizado por
+              motivo y un camino corto hacia el pedido: elegir, escribir por WhatsApp
+              y recibir a domicilio.
+            </p>
+            <ul class="case__points">
+              <li><i data-icon="check" data-size="16"></i>Catálogo de arreglos según el motivo</li>
+              <li><i data-icon="check" data-size="16"></i>Pedido por WhatsApp siempre a mano</li>
+              <li><i data-icon="check" data-size="16"></i>Reseñas y ubicación para generar confianza</li>
+            </ul>
+            <ul class="sol__tags case__tags">
+              <li>Floristería</li><li>Catálogo</li><li>Pedidos por WhatsApp</li>
+            </ul>
+            <div class="case__cta">
+              <a href="https://latin-flowers.vercel.app/" class="btn btn--primary magnetic" target="_blank" rel="noopener">
+                Visitar sitio <i data-icon="external-link" data-size="15"></i>
+              </a>
+              <span class="case__url">latin-flowers.vercel.app</span>
+            </div>
+          </div>
+
+          <div class="devices" data-devices>
+            <figure class="device device--desktop">
+              <div class="device__bar" aria-hidden="true">
+                <span class="device__dots"><i></i><i></i><i></i></span>
+                <span class="device__url">latin-flowers.vercel.app</span>
+              </div>
+              <div class="device__screen">
+                <img src="assets/portafolio/flowers-desktop.jpg" alt="Versión de escritorio del sitio de la floristería Latín Flowers" loading="lazy" width="1440" height="3600">
+              </div>
+              <figcaption class="device__label"><i data-icon="monitor" data-size="13"></i>Escritorio</figcaption>
+            </figure>
+            <figure class="device device--mobile">
+              <div class="device__screen">
+                <img src="assets/portafolio/flowers-mobile.jpg" alt="Versión móvil del sitio de la floristería Latín Flowers" loading="lazy" width="780" height="6800">
+              </div>
+              <figcaption class="device__label"><i data-icon="smartphone" data-size="13"></i>Móvil</figcaption>
+            </figure>
+          </div>
+        </article>
+
+      </div>
+      <p class="cases__hint" aria-hidden="true"><i data-icon="mouse-pointer-click" data-size="14"></i>Pasa el cursor sobre cada pantalla para recorrer la página.</p>
+    </div>
+  </section>
+
+  <!-- ============ PILARES ============ -->
+  <section class="section section--alt section--bordered" id="pilares">
+    <div class="section__inner">
+      <div class="section__head" data-head>
+        <div>
+          <h2 class="eyebrow"><span class="eyebrow__t">Por qué tener una página web</span></h2>
+          <p class="hook"><span class="hook__l1"><span class="hl"><span>Tus redes te dan visibilidad.</span></span></span><span class="hook__l2"><span class="hl"><span>Tu página te da un lugar propio.</span></span></span></p>
+        </div>
+        <p class="section__sub">
+          Instagram y WhatsApp son donde te encuentran. La página web es donde tu
+          cliente confirma que puede confiar en ti: qué haces, cómo trabajas y cómo
+          contactarte. Estos son los pilares con los que la construimos.
+        </p>
+      </div>
+
+      <div class="pillars">
+        <article class="pillar reveal">
+          <span class="pillar__icon"><i data-icon="compass" data-size="20"></i></span>
+          <span class="pillar__num">01</span>
+          <h3 class="pillar__title">Estrategia antes que diseño</h3>
+          <p class="pillar__desc">Definimos qué quieres que haga quien entra —escribirte, agendar o pedir— y ordenamos toda la página alrededor de esa acción.</p>
+        </article>
+        <article class="pillar reveal">
+          <span class="pillar__icon"><i data-icon="smartphone" data-size="20"></i></span>
+          <span class="pillar__num">02</span>
+          <h3 class="pillar__title">Primero para el celular</h3>
+          <p class="pillar__desc">Tus clientes te buscan desde el teléfono. Diseñamos para esa pantalla primero y después la llevamos al escritorio.</p>
+        </article>
+        <article class="pillar reveal">
+          <span class="pillar__icon"><i data-icon="message-circle" data-size="20"></i></span>
+          <span class="pillar__num">03</span>
+          <h3 class="pillar__title">Conectada a tu WhatsApp</h3>
+          <p class="pillar__desc">Cada botón abre una conversación con un mensaje listo, para que la visita no se quede en una visita.</p>
+        </article>
+        <article class="pillar reveal">
+          <span class="pillar__icon"><i data-icon="palette" data-size="20"></i></span>
+          <span class="pillar__num">04</span>
+          <h3 class="pillar__title">Identidad propia</h3>
+          <p class="pillar__desc">Colores, tipografía y fotos responden a tu marca. Por eso ninguno de nuestros proyectos se parece al otro.</p>
+        </article>
+        <article class="pillar reveal">
+          <span class="pillar__icon"><i data-icon="gauge" data-size="20"></i></span>
+          <span class="pillar__num">05</span>
+          <h3 class="pillar__title">Rápida y lista para Google</h3>
+          <p class="pillar__desc">Código ligero, imágenes optimizadas y una estructura base de SEO para que cargue rápido y se pueda encontrar.</p>
+        </article>
+        <article class="pillar reveal">
+          <span class="pillar__icon"><i data-icon="file-text" data-size="20"></i></span>
+          <span class="pillar__num">06</span>
+          <h3 class="pillar__title">Textos que explican</h3>
+          <p class="pillar__desc">Escribimos el contenido contigo, en el idioma de tu cliente, para que entienda en segundos qué ofreces y por qué elegirte.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESO ============ -->
+  <section class="section section--bordered" id="proceso">
+    <div class="section__inner">
+      <div class="section__head" data-head>
+        <div>
+          <h2 class="eyebrow"><span class="eyebrow__t">Cómo creamos tu página web</span></h2>
+          <p class="hook"><span class="hook__l1"><span class="hl"><span>Cuatro pasos claros.</span></span></span><span class="hook__l2"><span class="hl"><span>Primera versión en menos de 48 horas.</span></span></span></p>
+        </div>
+        <p class="section__sub">
+          Un proceso corto, para que sepas en todo momento en qué punto está tu
+          página y qué necesitamos de ti.
+        </p>
+      </div>
+
+      <div class="stepper" id="stepper">
+        <div class="stepper__line" aria-hidden="true"></div>
+        <div class="stepper__progress" aria-hidden="true"></div>
+        <span class="stepper__dot" aria-hidden="true"></span>
+        <ol class="stepper__list">
+          <li class="step">
+            <span class="step__icon"><i data-icon="headset" data-size="20"></i></span>
+            <div class="step__text">
+              <span class="step__num">01</span>
+              <h3 class="step__title">Reunión inicial</h3>
+              <p class="step__desc">Conversamos sobre tu negocio, tu cliente y lo que necesitas que logre la página.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__icon"><i data-icon="file-text" data-size="20"></i></span>
+            <div class="step__text">
+              <span class="step__num">02</span>
+              <h3 class="step__title">Completas el brief</h3>
+              <p class="step__desc">Un formulario corto con tus textos, fotos, referencias y datos de contacto. Con él arrancamos.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__icon"><i data-icon="timer" data-size="20"></i></span>
+            <div class="step__text">
+              <span class="step__num">03</span>
+              <h3 class="step__title">Primera entrega en menos de 48 h</h3>
+              <p class="step__desc">Desde que tenemos el brief completo, recibes la primera versión de tu página en línea.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__icon"><i data-icon="monitor" data-size="20"></i></span>
+            <div class="step__text">
+              <span class="step__num">04</span>
+              <h3 class="step__title">Reunión de vista inicial</h3>
+              <p class="step__desc">La recorremos juntos en escritorio y celular, y anotamos los ajustes que quieras hacer.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="revisions reveal">
+        <span class="revisions__icon"><i data-icon="refresh-cw" data-size="20"></i></span>
+        <div class="revisions__text">
+          <h3 class="revisions__title">Incluye hasta 2 rondas de correcciones</h3>
+          <p class="revisions__desc">
+            Después de la vista inicial puedes pedir ajustes en dos rondas como máximo.
+            Por eso la reunión inicial y el brief son tan importantes: mientras más claro
+            esté todo al principio, más precisa es la primera entrega.
+          </p>
+        </div>
+        <ol class="revisions__rounds" aria-label="Rondas de corrección incluidas">
+          <li><span>1</span>Ronda 1</li>
+          <li><span>2</span>Ronda 2</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CIERRE ============ -->
+  <section class="section section--alt section--bordered portfolio-cta" id="cierre">
+    <div class="section__inner section__inner--narrow">
+      <div class="portfolio-cta__head" data-head>
+        <h2 class="eyebrow"><span class="eyebrow__t">Creación de páginas web</span></h2>
+        <p class="hook"><span class="hook__l1"><span class="hl"><span>¿Tu negocio es el siguiente?</span></span></span><span class="hook__l2"><span class="hl"><span>Cuéntanos qué necesitas.</span></span></span></p>
+        <p class="section__sub">Escríbenos por WhatsApp y agendamos la reunión inicial. Sin compromiso.</p>
+        <div class="portfolio-cta__action">
+          <a href="#" class="btn btn--primary btn--lg magnetic js-wa-web" target="_blank" rel="noopener">Quiero mi página web</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <img src="assets/logo-integrolabs.png" alt="IntegroLabs" height="30" width="30">
+      <span>IntegroLabs</span>
+    </div>
+
+    <div class="footer__contact">
+      <a href="https://wa.me/584220140873" target="_blank" rel="noopener" class="footer__whatsapp">
+        +58 422-014-0873
+      </a>
+      <a href="https://instagram.com/integrolabs" target="_blank" rel="noopener">@integrolabs</a>
+    </div>
+
+    <p class="footer__copy">
+      © <span id="year"></span> IntegroLabs. Todos los derechos reservados.
+      · <a href="legal.html" target="_blank" rel="noopener" class="footer__legal">Política de datos y cookies</a>
+    </p>
+  </div>
+</footer>
+
+<!-- ============ SELECTOR DE VERSIÓN: clara / oscura ============ -->
+<div class="theme-switch" id="themeSwitch" role="group" aria-label="Versión del sitio">
+  <button type="button" class="theme-switch__btn" data-theme-set="light" aria-pressed="false">
+    <i data-icon="sun" data-size="15"></i><span>Versión clara</span>
+  </button>
+  <button type="button" class="theme-switch__btn" data-theme-set="dark" aria-pressed="true">
+    <i data-icon="moon" data-size="15"></i><span>Versión oscura</span>
+  </button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/main.js"></script>
+<script src="js/sections.js"></script>
+<script src="js/paginas-web.js"></script>
+</body>
+</html>
