@@ -63,6 +63,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
@@ -130,14 +131,14 @@ h1, h2, h3 {
   flex-shrink: 0;
 }
 
-/* ---------- Buttons — sharp, no radius ---------- */
+/* ---------- Buttons — redondos (pill) en todo el sitio ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 16px 28px;
-  border-radius: var(--radius);
+  padding: 16px 30px;
+  border-radius: 999px;
   font-family: var(--font-sans);
   font-weight: 500;
   font-size: 14.5px;
@@ -172,7 +173,7 @@ h1, h2, h3 {
   top: 16px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(680px, calc(100% - 32px));
+  width: min(780px, calc(100% - 32px));
   z-index: 1000;
 }
 .nav__capsule {
@@ -195,7 +196,7 @@ h1, h2, h3 {
 .nav__logo img { height: 28px; width: auto; display: block; }
 .nav__logo-text { font-size: 14px; font-weight: 500; color: #1F2A50; }
 .nav__links {
-  display: flex; flex: 1; justify-content: center; align-items: center; gap: 22px;
+  display: flex; flex: 1; justify-content: center; align-items: center; gap: 18px;
   font-size: 13px; color: #4A5572;
 }
 .nav__links a { position: relative; padding: 4px 0; white-space: nowrap; transition: color 0.25s ease; }
@@ -227,7 +228,7 @@ h1, h2, h3 {
 .nav__panel a.is-current { font-weight: 500; box-shadow: inset 2px 0 0 #35A8E0; }
 .nav__panel.is-open { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
 
-@media (max-width: 767px) {
+@media (max-width: 899px) {
   .nav__links { display: none; }
   .nav__toggle { display: inline-flex; margin-left: auto; }
   .nav__panel { display: flex; }
@@ -244,6 +245,8 @@ h1, h2, h3 {
   --weave-t2: #35A8E0;
   --weave-t3: #2B86B5;
   --weave-t4: #a9b8d9;
+  /* ancho de la columna de texto central; las animaciones ocupan el resto */
+  --hero-text: min(660px, 44vw);
 
   position: relative;
   overflow: hidden;
@@ -253,14 +256,22 @@ h1, h2, h3 {
   flex-direction: column;
   min-height: clamp(380px, 50svh, 520px);
 }
+/* Dos instancias del tejido, una por costado. Cada canvas mide el doble de su
+   columna lateral: la animación se dibuja en su mitad externa y una máscara CSS
+   apaga la mitad interna para que nunca pase por detrás del texto. */
 .hero-weave {
   position: absolute;
-  inset: 0;
-  width: 100%;
+  top: 0;
+  bottom: 0;
+  width: max(calc(100% - var(--hero-text)), 520px);
   height: 100%;
   z-index: 0;
   pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, transparent 40%, #000 56%);
+  mask-image: linear-gradient(to right, transparent 0, transparent 40%, #000 56%);
 }
+.hero-weave--r { right: 0; }
+.hero-weave--l { left: 0; transform: rotate(180deg); } /* gira el dibujo y su máscara hacia el otro costado */
 .hero__body {
   position: relative;
   z-index: 1;
@@ -271,17 +282,26 @@ h1, h2, h3 {
   flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
-/* Texto a la izquierda; la animación ocupa la mitad derecha */
-.hero__content { width: 100%; max-width: 58%; }
+/* Texto centrado; las animaciones quedan a ambos costados */
+.hero__content { width: 100%; max-width: var(--hero-text); text-align: center; }
+.hero__content .eyebrow { justify-content: center; text-align: center; font-size: 12px; letter-spacing: 0.08em; }
+.hero__content .eyebrow::after {
+  content: "";
+  width: 16px;
+  height: 1px;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
 .hero__hook { margin-top: 14px; }
 .hero__subtitle {
-  margin-top: 14px;
+  margin: 14px auto 0;
   font-size: clamp(14.5px, 1.2vw, 16.5px);
   color: var(--text-secondary);
   max-width: 54ch;
 }
-.hero__cta { margin-top: 22px; }
+.hero__cta { margin-top: 22px; display: flex; flex-direction: column; align-items: center; }
 .microcopy {
   margin-top: 10px;
   font-size: 12.5px;
@@ -301,16 +321,20 @@ h1, h2, h3 {
 }
 .hook__l1, .hook__l2 { display: block; }
 .hook__l2 { color: var(--color-accent); }
-.hero__hook { font-size: clamp(22px, 2.15vw, 34px); }
-@media (min-width: 900px) { .hero__hook { white-space: nowrap; } }
+.hero__hook { font-size: clamp(19px, 1.9vw, 30px); text-wrap: balance; }
+@media (min-width: 1100px) { .hero__hook { white-space: nowrap; } }
 
-/* Móvil: el texto ocupa solo la mitad superior del hero; la animación
-   se dibuja en la mitad inferior. Dos filas 1fr iguales = el hero mide
-   el doble de la altura del texto, sin números mágicos. */
+/* Móvil: el texto (centrado) ocupa solo la mitad superior del hero; la
+   animación se dibuja en la mitad inferior. Dos filas 1fr iguales = el hero
+   mide el doble de la altura del texto, sin números mágicos. Una sola
+   instancia del tejido, a todo el ancho. */
 @media (max-width: 759px) {
   .hero { display: grid; grid-template-rows: 1fr 1fr; min-height: 0; padding-top: 88px; }
   .hero__body { grid-row: 1; align-items: flex-start; padding-bottom: 24px; }
   .hero__content { max-width: 100%; }
+  .hero-weave { width: 100%; -webkit-mask-image: none; mask-image: none; }
+  .hero-weave--r { left: 0; right: 0; }
+  .hero-weave--l { display: none; }
 }
 
 /* ---------- Sections (shared) ---------- */
@@ -404,6 +428,7 @@ h1, h2, h3 {
   position: relative;
   margin-top: 3px;
 }
+.option-card input[type="radio"], .option-card input[type="radio"]:checked::after { border-radius: 50%; }
 .option-card input:checked { border-color: var(--color-accent); }
 .option-card input:checked::after {
   content: "";
@@ -444,7 +469,7 @@ h1, h2, h3 {
 #qualForm[data-current-step="4"] .wizard__nav { display: none; }
 
 /* ---------- Footer ---------- */
-.footer { border-top: 1px solid var(--line); padding: 48px 24px; }
+.footer { border-top: 1px solid var(--line); padding: 48px 24px 96px; }
 .footer__inner {
   max-width: var(--container-max);
   margin: 0 auto;

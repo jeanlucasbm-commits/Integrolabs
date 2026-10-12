@@ -1,81 +1,77 @@
 # IntegroLabs — Landing Page
 
-Sitio de una sola página, sin build ni frameworks. Tres archivos hacen todo el trabajo:
+Sitio de una sola página, sin build ni frameworks (HTML + CSS + JS).
 
 ```
 integrolabs-landing/
-├── index.html   ← todo el contenido y la estructura (texto, secciones)
+├── index.html          ← contenido y estructura (texto, secciones)
+├── legal.html          ← política de datos y cookies (enlazada en el pie)
+├── assets/
+│   ├── logo-integrolabs.png   ← logo (menú, pie y favicon)
+│   └── team/                  ← fotos del equipo (recortadas en cuadrado)
 ├── css/
-│   └── styles.css  ← colores, tipografía, layout, animaciones
+│   ├── styles.css      ← tokens, botones, menú, hero, formulario, pie
+│   └── sections.css    ← bloques (franja, comparador, soluciones, equipo, chat) y tema claro
 └── js/
-    └── main.js     ← menú móvil, animaciones al hacer scroll, el wizard del formulario
+    ├── main.js         ← menú, scroll, formulario, selector de versión clara/oscura
+    ├── sections.js     ← franja, comparador, stepper, carrusel, equipo, chat
+    ├── icons.js        ← íconos Lucide incrustados
+    └── integrolabs-weave.js  ← animación "Tejido" del hero (no modificar)
 ```
 
 ## Cómo editar texto o secciones
 
-Todo el copy vive en `index.html`, en español, dentro de etiquetas normales
-(`<h1>`, `<p>`, etc.). Para cambiar cualquier texto, busca la frase en ese
-archivo y edítala directamente — no hace falta tocar CSS ni JS ni instalar nada.
+Todo el copy vive en `index.html`, en español, dentro de etiquetas normales.
+Busca la frase y edítala directamente.
 
-## Cómo ver los cambios localmente
+## Hero
 
-No hay build. Basta con abrir `index.html` con un servidor local simple
-(abrirlo directo como archivo funciona para ver el texto, pero el navegador
-puede bloquear algunas rutas relativas — mejor usar un servidor):
+El texto va centrado y la animación "Tejido" se dibuja a ambos costados:
+hay **dos** `<canvas data-weave>` (`.hero-weave--r` y `.hero-weave--l`). La
+izquierda es la misma animación girada 180° por CSS. En móvil solo se usa una,
+en la mitad inferior. El ancho de la columna de texto es `--hero-text`
+(`css/styles.css`, bloque `.hero`).
+
+## Soluciones de Inteligencia Artificial
+
+Bloque `#soluciones`: Chatbots, Creación de páginas web, Manejo de Ads y
+Edición de videos con IA (tarjeta destacada de ancho completo, con un mock animado de
+editor). Los mini-visuales son solo CSS.
+
+## Versión clara / oscura
+
+Selector fijo en la esquina inferior derecha (`#themeSwitch`). La versión clara es la
+oficial (predeterminada); la elección se guarda en `localStorage` (`il-theme`). El tema
+claro es un bloque `html[data-theme="light"]` al final de `css/sections.css`
+que redefine las variables de color. La animación del hero solo lee sus
+colores al montarse, por eso `main.js` la vuelve a montar al cambiar de tema.
+
+## Equipo
+
+Las fotos se configuran al inicio de `js/sections.js` (`PHOTO_JM`, `PHOTO_JL`)
+y se muestran en un círculo. Si una foto no carga, se ven las iniciales. Los
+perfiles de LinkedIn van en `LINKEDIN_JM` / `LINKEDIN_JL` (vacío = sin ícono).
+
+## Ver los cambios localmente
 
 ```bash
 npx serve integrolabs-landing
 ```
 
-o, si tienen Python instalado:
+y abrir la URL que indique la terminal.
 
-```bash
-python -m http.server --directory integrolabs-landing 8080
-```
+## Desplegar
 
-Y abren `http://localhost:3000` (o el puerto que indique la terminal) en el navegador.
+Sitio 100 % estático: Netlify, Vercel o GitHub Pages, sin variables de entorno.
 
-## Cómo desplegar
+## Formulario de calificación
 
-Es un sitio 100% estático — se puede arrastrar la carpeta completa a:
-
-- **Netlify** (drag & drop en app.netlify.com/drop)
-- **Vercel** (`vercel --prod` desde dentro de la carpeta, sin build step)
-- **GitHub Pages** (subir el contenido a un repo y activar Pages)
-
-No hay variables de entorno ni backend que configurar.
-
-## El logo
-
-El logo actual (círculo con gradiente azul + ícono geométrico blanco) es un
-**placeholder hecho en SVG inline**, inspirado en la descripción del brief —
-**no es el logo real de IntegroLabs** porque no se adjuntó ningún archivo de
-imagen en la conversación donde se generó este sitio.
-
-Para poner el logo real:
-1. Guarda el archivo del logo (idealmente `.svg` o `.png` con fondo
-   transparente) en una carpeta `assets/` dentro de `integrolabs-landing/`.
-2. En `index.html`, reemplaza los dos bloques `<span class="logo-mark">…</span>`
-   (uno en el nav, otro en el footer) por una etiqueta `<img>` apuntando a
-   `assets/tu-logo.svg`.
-
-## El formulario de calificación (wizard)
-
-No envía datos a ningún servidor. Al terminar los 3 pasos, arma un mensaje de
-WhatsApp con todas las respuestas y lo manda directo a
-**+58 422-014-0873** vía un link `https://wa.me/...`. El usuario solo tiene
-que confirmar el envío desde su propio WhatsApp.
-
-Si en el futuro quieren capturar los leads en una base de datos además de
-(o en vez de) WhatsApp, el lugar exacto para conectar eso está marcado con
-un comentario en `js/main.js`, dentro de la función `buildWhatsAppMessage()`.
-
-Si el número de WhatsApp cambia, solo hay que editar la constante
-`WHATSAPP_NUMBER` al inicio de `js/main.js` (se usa tanto en el wizard como
-en el footer).
+No envía datos a ningún servidor: arma un mensaje de WhatsApp con las
+respuestas y abre `https://wa.me/...`. El número vive en la constante
+`WHATSAPP_NUMBER` al inicio de `js/main.js`.
 
 ## Sistema de diseño
 
-Los colores, tipografía y espaciados están centralizados como variables CSS
-al inicio de `css/styles.css` (bloque `:root`). Cambiar un color en un solo
-lugar (por ejemplo `--accent-1` o `--accent-2`) lo actualiza en todo el sitio.
+Colores, tipografía y espaciados están como variables CSS en `:root`
+(`css/styles.css`). El acento de marca es `--color-accent`; el tema claro lo
+redefine en `html[data-theme="light"]`. Los botones son redondos (`999px`).

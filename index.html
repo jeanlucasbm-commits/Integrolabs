@@ -11,7 +11,13 @@
 <link rel="apple-touch-icon" href="assets/logo-integrolabs.png">
 
 <!-- Fuente: Instrument Sans, única tipografía del sitio -->
-<script>document.documentElement.classList.add("js")</script>
+<script>
+  document.documentElement.classList.add("js");
+  /* Tema: la versión oficial es la clara; solo se usa la oscura si la persona la eligió. Se aplica antes de pintar. */
+  var theme = "light";
+  try { if (localStorage.getItem("il-theme") === "dark") theme = "dark"; } catch (e) {}
+  if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
@@ -35,6 +41,7 @@
 
     <nav class="nav__links" aria-label="Navegación principal">
       <a href="#problema" data-nav="problema">Cómo funciona</a>
+      <a href="#soluciones" data-nav="soluciones">Soluciones</a>
       <a href="#solucion" data-nav="solucion">Método</a>
       <a href="#metodo" data-nav="metodo">Por qué nosotros</a>
       <a href="#equipo" data-nav="equipo">Equipo</a>
@@ -48,6 +55,7 @@
 
   <nav class="nav__panel" id="navPanel" aria-label="Menú móvil">
     <a href="#problema" data-nav="problema">Cómo funciona</a>
+    <a href="#soluciones" data-nav="soluciones">Soluciones</a>
     <a href="#solucion" data-nav="solucion">Método</a>
     <a href="#metodo" data-nav="metodo">Por qué nosotros</a>
     <a href="#equipo" data-nav="equipo">Equipo</a>
@@ -58,8 +66,10 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="hero">
-    <!-- Animación "Tejido" (js/integrolabs-weave.js se monta sola sobre cualquier canvas[data-weave]) -->
-    <canvas class="hero-weave" data-weave aria-hidden="true"></canvas>
+    <!-- Animación "Tejido" (js/integrolabs-weave.js se monta sola sobre cualquier canvas[data-weave]).
+         Dos instancias, una por costado, con el texto al centro. La izquierda se gira 180° por CSS. -->
+    <canvas class="hero-weave hero-weave--r" data-weave aria-hidden="true"></canvas>
+    <canvas class="hero-weave hero-weave--l" data-weave aria-hidden="true"></canvas>
     <div class="hero__body">
       <div class="hero__content" data-head>
         <h1 class="eyebrow"><span class="eyebrow__t">Inteligencia artificial para empresas en Venezuela y Latinoamérica</span></h1>
@@ -144,8 +154,124 @@
     </div>
   </section>
 
+  <!-- ============ SOLUCIONES DE INTELIGENCIA ARTIFICIAL ============ -->
+  <section class="section section--alt section--bordered" id="soluciones">
+    <div class="section__inner">
+      <div class="section__head" data-head>
+        <div>
+          <h2 class="eyebrow"><span class="eyebrow__t">Soluciones de Inteligencia Artificial</span></h2>
+          <p class="hook"><span class="hook__l1"><span class="hl"><span>Cuatro formas concretas de empezar.</span></span></span><span class="hook__l2"><span class="hl"><span>Tú eliges por dónde.</span></span></span></p>
+        </div>
+        <p class="section__sub">
+          Cada solución funciona por sí sola o conectada a las demás. Te ayudamos a elegir
+          según cómo atiendes y vendes hoy.
+        </p>
+      </div>
+
+      <div class="solutions">
+        <!-- Chatbots -->
+        <article class="sol reveal">
+          <div class="sol__visual sol__visual--chat" aria-hidden="true">
+            <span class="sol__bubble sol__bubble--in">Hola, ¿tienen disponible?</span>
+            <span class="sol__bubble sol__bubble--out">¡Sí! ¿Para qué día lo necesitas?</span>
+            <span class="sol__typing"><i></i><i></i><i></i></span>
+          </div>
+          <span class="sol__icon"><i data-icon="bot" data-size="20"></i></span>
+          <h3 class="sol__title">Chatbots</h3>
+          <p class="sol__desc">
+            Agentes de IA que atienden a tus clientes por WhatsApp e Instagram: resuelven dudas,
+            califican al interesado y lo conducen hasta la venta o la cita. Un sistema de conversión
+            donde cada conversación avanza hacia un objetivo y queda registrada en tu CRM.
+          </p>
+          <ul class="sol__tags"><li>Agentes de IA</li><li>WhatsApp</li><li>Calificación</li></ul>
+        </article>
+
+        <!-- Páginas web -->
+        <article class="sol reveal">
+          <div class="sol__visual sol__visual--web" aria-hidden="true">
+            <span class="sol__browser"><i></i><i></i><i></i></span>
+            <span class="sol__block sol__block--h"></span>
+            <span class="sol__block sol__block--p"></span>
+            <span class="sol__block sol__block--p sol__block--short"></span>
+            <span class="sol__block sol__block--btn"></span>
+            <span class="sol__clock"><i data-icon="timer" data-size="14"></i> &lt; 48 h</span>
+          </div>
+          <span class="sol__icon"><i data-icon="layout-template" data-size="20"></i></span>
+          <h3 class="sol__title">Creación de páginas web</h3>
+          <p class="sol__desc">
+            Entregamos tu página web en menos de 48 horas, a partir del momento en que tenemos tu
+            información. Diseño, textos y conexión directa a WhatsApp, pensada para el celular y
+            para convertir visitas en conversaciones.
+          </p>
+          <ul class="sol__tags"><li>Entrega en menos de 48 h</li><li>Móvil primero</li><li>Conexión a WhatsApp</li></ul>
+        </article>
+
+        <!-- Manejo de Ads -->
+        <article class="sol reveal">
+          <div class="sol__visual sol__visual--ads" aria-hidden="true">
+            <span class="sol__bars"><i style="--h:38%"></i><i style="--h:62%"></i><i style="--h:30%"></i><i style="--h:84%"></i><i style="--h:56%"></i><i style="--h:92%"></i></span>
+            <span class="sol__chip">Meta Ads</span>
+          </div>
+          <span class="sol__icon"><i data-icon="megaphone" data-size="20"></i></span>
+          <h3 class="sol__title">Manejo de Ads</h3>
+          <p class="sol__desc">
+            Incorporamos IA para analizar tu pauta en Meta Ads: leemos el rendimiento de cada
+            anuncio, audiencia y creativo, detectamos qué gasta presupuesto sin dar resultados y
+            te proponemos qué pausar, qué escalar y qué probar. Decides con datos, no con intuición.
+          </p>
+          <ul class="sol__tags"><li>Análisis con IA</li><li>Meta Ads</li><li>Optimización</li></ul>
+        </article>
+
+        <!-- Edición de videos: protagonista del bloque -->
+        <article class="sol sol--feature reveal">
+          <div class="sol__feature-text">
+            <span class="sol__kicker"><i data-icon="sparkles" data-size="14"></i> Solución destacada</span>
+            <span class="sol__icon"><i data-icon="clapperboard" data-size="22"></i></span>
+            <h3 class="sol__title">Edición de videos con IA</h3>
+            <p class="sol__desc">
+              Partimos de tu idea y le damos un concepto visual propio: estilo, ritmo, tipografía y
+              colores de tu marca. Con IA cortamos, subtitulamos y adaptamos cada pieza a todos los
+              formatos, así editas y publicas contenido mucho más rápido, sin perder identidad.
+            </p>
+            <ol class="sol__steps">
+              <li><span>01</span><div><strong>Concepto visual</strong><small>Definimos cómo se ve y cómo se siente tu contenido.</small></div></li>
+              <li><span>02</span><div><strong>Edición asistida por IA</strong><small>Cortes, subtítulos y ritmo en una fracción del tiempo.</small></div></li>
+              <li><span>03</span><div><strong>Versiones para cada red</strong><small>Reels, historias y anuncios, listos para publicar.</small></div></li>
+            </ol>
+          </div>
+
+          <div class="editor" aria-hidden="true">
+            <div class="editor__top">
+              <span class="editor__dots"><i></i><i></i><i></i></span>
+              <span class="editor__title"><i data-icon="clapperboard" data-size="13"></i> reel_marca_v2</span>
+              <span class="editor__rec">IA activa</span>
+            </div>
+            <div class="editor__stage">
+              <div class="editor__frame">
+                <span class="editor__scene"></span>
+                <span class="editor__caption"><b>Más ventas,</b> menos tiempo</span>
+              </div>
+              <div class="editor__side">
+                <span class="editor__chip"><i data-icon="captions" data-size="13"></i> Subtítulos automáticos</span>
+                <span class="editor__chip"><i data-icon="scissors" data-size="13"></i> Cortes por ritmo</span>
+                <span class="editor__chip"><i data-icon="sparkles" data-size="13"></i> Estilo de marca</span>
+              </div>
+            </div>
+            <div class="editor__tracks">
+              <span class="editor__playhead"></span>
+              <div class="editor__track"><i style="--w:22%"></i><i style="--w:30%"></i><i style="--w:18%"></i><i style="--w:20%"></i></div>
+              <div class="editor__track editor__track--b"><i style="--w:40%"></i><i style="--w:26%"></i><i style="--w:24%"></i></div>
+              <div class="editor__track editor__track--c"><i style="--w:12%"></i><i style="--w:14%"></i><i style="--w:10%"></i><i style="--w:16%"></i><i style="--w:12%"></i><i style="--w:14%"></i></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
   <!-- ============ QUÉ HACEMOS: método en 4 pasos ============ -->
-  <section class="section section--alt section--bordered" id="solucion">
+  <section class="section section--bordered" id="solucion">
     <div class="section__inner">
       <div class="section__head" data-head>
         <div>
@@ -463,6 +589,16 @@
     </p>
   </div>
 </footer>
+
+<!-- ============ SELECTOR DE VERSIÓN: clara / oscura ============ -->
+<div class="theme-switch" id="themeSwitch" role="group" aria-label="Versión del sitio">
+  <button type="button" class="theme-switch__btn" data-theme-set="light" aria-pressed="false">
+    <i data-icon="sun" data-size="15"></i><span>Versión clara</span>
+  </button>
+  <button type="button" class="theme-switch__btn" data-theme-set="dark" aria-pressed="true">
+    <i data-icon="moon" data-size="15"></i><span>Versión oscura</span>
+  </button>
+</div>
 
 <!-- Animation libraries — CDN, no build step. main.js feature-detects each one. -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

@@ -10,8 +10,8 @@
    Rutas de las fotos y perfiles de LinkedIn. Si una foto no existe o no
    carga, se muestran las iniciales. Si LINKEDIN_* está vacío, no se muestra
    el ícono. */
-const PHOTO_JM = ""; // ej. "assets/team/juan-manuel.jpg" (vacío = se muestran las iniciales)
-const PHOTO_JL = ""; // ej. "assets/team/jean-lucas.jpg"
+const PHOTO_JM = "assets/team/juan-manuel.jpg"; // vacío = se muestran las iniciales
+const PHOTO_JL = "assets/team/jean-lucas.jpg";
 const LINKEDIN_JM = ""; // TODO: URL del perfil de Juan Manuel Chacin
 const LINKEDIN_JL = ""; // TODO: URL del perfil de Jean Lucas Bello
 

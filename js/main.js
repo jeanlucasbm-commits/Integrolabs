@@ -40,7 +40,49 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollReveal();
   initScrollProgress();
   initWizard();
+  initThemeToggle();
+  initHeroWeave();
 });
+
+/* ---------- Versión clara / oscura ----------
+   El tema vive en <html data-theme="light"> (oscuro = sin atributo). El script
+   de <head> lo aplica antes de pintar. La animación del hero lee sus colores
+   solo al montarse, así que al cambiar de tema se vuelve a montar. */
+function remountWeave() {
+  document.querySelectorAll("canvas[data-weave]").forEach((old) => old.replaceWith(old.cloneNode(false)));
+  const s = document.createElement("script");
+  s.src = "js/integrolabs-weave.js?t=" + Date.now();
+  s.onload = () => { s.remove(); initHeroWeave(); };
+  document.body.appendChild(s);
+}
+
+function initThemeToggle() {
+  const root = document.documentElement;
+  const buttons = document.querySelectorAll("[data-theme-set]");
+  if (!buttons.length) return;
+
+  const current = () => (root.getAttribute("data-theme") === "light" ? "light" : "dark");
+  const paint = () => buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.themeSet === current())));
+  paint();
+
+  buttons.forEach((b) => b.addEventListener("click", () => {
+    const next = b.dataset.themeSet;
+    if (next === current()) return;
+    if (next === "light") root.setAttribute("data-theme", "light"); else root.removeAttribute("data-theme");
+    try { localStorage.setItem("il-theme", next); } catch (e) { /* sin almacenamiento: el cambio vale solo para esta visita */ }
+    paint();
+    remountWeave();
+  }));
+}
+
+/* ---------- Hero: desfasa la animación izquierda de la derecha ----------
+   Ambas se montan a la vez; reiniciar la izquierda ~1.2 s después hace que
+   los costados no construyan el tejido al unísono. */
+function initHeroWeave() {
+  const left = document.querySelector(".hero-weave--l");
+  if (!left || prefersReducedMotion) return;
+  setTimeout(() => { if (typeof left.weaveReplay === "function") left.weaveReplay(); }, 1200);
+}
 
 /* ---------- Footer year ---------- */
 function initYear() {
