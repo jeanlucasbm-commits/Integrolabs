@@ -5,7 +5,7 @@ ogType: article
 <article class="post">
   <header class="post__head">
     <a href="/blog/" class="post__back">← Todos los artículos</a>
-    {% if draft %}<p class="post__draft">Borrador · no se publica en el sitio oficial</p>{% endif %}
+    {% if draft %}<p class="post__draft">Borrador · solo visible con este enlace, no aparece en el blog ni en Google</p>{% endif %}
     {% if category %}<p class="blog-eyebrow">{{ category }}</p>{% endif %}
     <h1 class="post__title">{{ title }}</h1>
     {% if description %}<p class="post__lead">{{ description }}</p>{% endif %}

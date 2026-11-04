@@ -46,5 +46,5 @@ collections:
       - { label: "Imagen de portada", name: image, widget: image, required: false }
       - { label: "Texto alternativo de la portada", name: imageAlt, widget: string, required: false }
       - { label: "Borrador", name: draft, widget: boolean, default: true,
-          hint: "Mientras esté activado, el artículo solo se ve en las previews, no en integrolabs.lat." }
+          hint: "Activado: el artículo se puede revisar en su enlace, pero no aparece en el blog ni en Google. Desactívalo para publicarlo." }
       - { label: "Contenido", name: body, widget: markdown }

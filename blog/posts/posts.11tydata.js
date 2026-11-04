@@ -1,12 +1,11 @@
 /* Datos compartidos por todos los artículos de blog/posts/.
    - Layout y URL: /blog/<nombre-del-archivo>/
-   - Borradores (draft: true): se ven en local y en las previews de Vercel,
-     pero NO se publican en producción. */
+   - Borradores (draft: true): en producción tienen su URL para revisarlos
+     (con noindex), pero NO aparecen en el listado del blog ni en el sitemap. */
 export default {
   layout: "post.njk",
   eleventyComputed: {
-    permalink: (data) =>
-      data.draft && data.site.isProduction ? false : `/blog/${data.page.fileSlug}/`,
+    permalink: (data) => `/blog/${data.page.fileSlug}/`,
     eleventyExcludeFromCollections: (data) => Boolean(data.draft && data.site.isProduction),
     jsonLd: (data) => ({
       "@context": "https://schema.org",

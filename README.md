@@ -101,8 +101,9 @@ iniciar sesión con GitHub (token personal con permiso sobre este repo) y
 crear el artículo. Al guardar se hace un commit en `main` y Vercel publica.
 
 **Borradores:** con el campo *Borrador* activado (`draft: true`), el artículo
-se ve en local y en las previews de Vercel, pero no en producción ni en el
-sitemap. Para publicarlo, desactivar *Borrador* y guardar.
+tiene su URL (`/blog/<nombre>/`, con `noindex`) para revisarlo, pero no aparece
+en el listado del blog ni en el sitemap en producción. Para publicarlo,
+desactivar *Borrador* y guardar.
 
 **Trabajar en local:**
 
