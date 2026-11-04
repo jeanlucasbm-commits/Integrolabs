@@ -1,12 +1,12 @@
 ---
-title: "¿Necesitas un chatbot para WhatsApp? 5 señales de que tu negocio ya lo está pidiendo"
+title: ¿Necesitas un chatbot para WhatsApp? 5 señales de que tu negocio ya lo está pidiendo
 description: Si respondes las mismas preguntas todo el día y aun así se te escapan clientes, el problema no es tu esfuerzo. Es que el negocio creció más rápido que la forma en que atiendes.
 date: 2026-11-03
 author: Jean Lucas Bello
 category: Atención por WhatsApp
 image: /assets/blog/chatbot-whatsapp-venezuela.jpg
 imageAlt: Teléfono con mensajes acumulados sobre el mostrador de un comercio, junto a un cuaderno de pedidos anotados a mano
-draft: true
+draft: false
 ---
 
 En muchos negocios de Venezuela y Latinoamérica, WhatsApp no es un canal más: es la tienda, el mostrador y la caja al mismo tiempo. Por ahí llegan las consultas, se cierran los pedidos y se confirman los pagos.
