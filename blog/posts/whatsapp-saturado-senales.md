@@ -6,7 +6,7 @@ author: Jean Lucas Bello
 category: Atención por WhatsApp
 image: /assets/blog/chatbot-whatsapp-venezuela.jpg
 imageAlt: Teléfono con mensajes acumulados sobre el mostrador de un comercio, junto a un cuaderno de pedidos anotados a mano
-draft: false
+published: true
 ---
 
 En muchos negocios de Venezuela y Latinoamérica, WhatsApp no es un canal más: es la tienda, el mostrador y la caja al mismo tiempo. Por ahí llegan las consultas, se cierran los pedidos y se confirman los pagos.

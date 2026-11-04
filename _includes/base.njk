@@ -36,6 +36,7 @@
 <link rel="stylesheet" href="/css/sections.css">
 <link rel="stylesheet" href="/css/blog.css">
 {% if jsonLd %}<script type="application/ld+json">{{ jsonLd | dump | safe }}</script>{% endif %}
+<script src="/js/analytics.js" async></script>
 </head>
 <body class="page-blog">
 
@@ -51,10 +52,12 @@
     </a>
 
     <nav class="nav__links" aria-label="Navegación principal">
+      <a href="/#problema">Cómo funciona</a>
       <a href="/#soluciones">Soluciones</a>
       <a href="/#solucion">Método</a>
       <a href="/paginas-web">Páginas web</a>
       <a href="/blog/" class="is-current" aria-current="page">Blog</a>
+      <a href="/#metodo">Por qué nosotros</a>
       <a href="/#equipo">Equipo</a>
     </nav>
 
@@ -65,15 +68,17 @@
   </div>
 
   <nav class="nav__panel" id="navPanel" aria-label="Menú móvil">
+    <a href="/#problema">Cómo funciona</a>
     <a href="/#soluciones">Soluciones</a>
     <a href="/#solucion">Método</a>
     <a href="/paginas-web">Páginas web</a>
     <a href="/blog/" class="is-current" aria-current="page">Blog</a>
+    <a href="/#metodo">Por qué nosotros</a>
     <a href="/#equipo">Equipo</a>
   </nav>
 </header>
 
-<main id="top" class="blog-main">
+<main id="top" class="blog-main{% if wide %} blog-main--wide{% endif %}">
 {{ content | safe }}
 </main>
 

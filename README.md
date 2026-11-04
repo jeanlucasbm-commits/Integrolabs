@@ -100,10 +100,10 @@ sitemap.njk, robots.txt     ← SEO
 iniciar sesión con GitHub (token personal con permiso sobre este repo) y
 crear el artículo. Al guardar se hace un commit en `main` y Vercel publica.
 
-**Borradores:** con el campo *Borrador* activado (`draft: true`), el artículo
+**Publicar / borrador:** con el interruptor *Publicar en el blog* apagado (`published: false`), el artículo
 tiene su URL (`/blog/<nombre>/`, con `noindex`) para revisarlo, pero no aparece
 en el listado del blog ni en el sitemap en producción. Para publicarlo,
-desactivar *Borrador* y guardar.
+encender *Publicar en el blog* y guardar.
 
 **Trabajar en local:**
 

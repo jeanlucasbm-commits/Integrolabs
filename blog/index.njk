@@ -1,8 +1,9 @@
 ---
 layout: base.njk
 title: Blog
-description: Artículos prácticos sobre inteligencia artificial, automatización y atención por WhatsApp para empresas en Venezuela y Latinoamérica.
+description: Artículos prácticos sobre inteligencia artificial, chatbots, automatización y atención por WhatsApp para empresas en Venezuela y Latinoamérica.
 permalink: /blog/
+wide: true
 ---
 <section class="blog-hero">
   <p class="blog-eyebrow">Blog de IntegroLabs</p>
@@ -10,19 +11,32 @@ permalink: /blog/
   <p class="blog-hero__lead">{{ description }}</p>
 </section>
 
-<section class="blog-list" aria-label="Artículos">
-  {% for post in collections.posts %}
-  <a class="blog-card" href="{{ post.url }}">
-    <p class="blog-card__meta">
-      {% if post.data.category %}<span class="blog-card__cat">{{ post.data.category }}</span> · {% endif %}
-      <time datetime="{{ post.date | fechaISO }}">{{ post.date | fechaLarga }}</time>
-      {% if post.data.draft %} · <span class="blog-card__draft">Borrador</span>{% endif %}
-    </p>
-    <h2 class="blog-card__title">{{ post.data.title }}</h2>
-    {% if post.data.description %}<p class="blog-card__desc">{{ post.data.description }}</p>{% endif %}
-    <span class="blog-card__more">Leer artículo →</span>
+{% set posts = collections.posts %}
+{% if posts.length %}
+<section class="blog-grid" aria-label="Artículos">
+  {% for post in posts %}
+  <a class="blog-card{% if loop.first %} blog-card--featured{% endif %}" href="{{ post.url }}">
+    <div class="blog-card__media">
+      {% if post.data.image %}
+      <img src="{{ post.data.image }}" alt="{{ post.data.imageAlt or '' }}" loading="{% if loop.first %}eager{% else %}lazy{% endif %}" width="1200" height="630">
+      {% else %}
+      <div class="blog-card__placeholder" aria-hidden="true"><img src="/assets/logo-integrolabs.png" alt="" width="40" height="40"></div>
+      {% endif %}
+    </div>
+    <div class="blog-card__body">
+      <p class="blog-card__meta">
+        {% if post.data.category %}<span class="blog-card__cat">{{ post.data.category }}</span> · {% endif %}
+        <time datetime="{{ post.date | fechaISO }}">{{ post.date | fechaLarga }}</time>
+        · {{ post.content | minutosLectura }} min
+        {% if post.data.draft %} · <span class="blog-card__draft">Borrador</span>{% endif %}
+      </p>
+      <h2 class="blog-card__title">{{ post.data.title }}</h2>
+      {% if post.data.description %}<p class="blog-card__desc">{{ post.data.description }}</p>{% endif %}
+      <span class="blog-card__more">Leer artículo →</span>
+    </div>
   </a>
-  {% else %}
-  <p class="blog-empty">Pronto publicaremos los primeros artículos.</p>
   {% endfor %}
 </section>
+{% else %}
+<p class="blog-empty">Pronto publicaremos los primeros artículos.</p>
+{% endif %}

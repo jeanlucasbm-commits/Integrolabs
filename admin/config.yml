@@ -1,6 +1,7 @@
 # Configuración del panel del blog (Sveltia CMS) — https://integrolabs.lat/admin/
 # Cada artículo se guarda como un archivo .md en blog/posts/ del repositorio.
 # Al guardar, el panel hace un commit en la rama main y Vercel republica el sitio.
+# El interruptor «Publicar en el blog» decide si el artículo aparece o queda como borrador.
 
 backend:
   name: github
@@ -35,6 +36,8 @@ collections:
     summary: "{{title}} — {{date}}"
     sortable_fields: [date, title]
     fields:
+      - { label: "🚀 Publicar en el blog", name: published, widget: boolean, default: false,
+          hint: "APAGADO = borrador: solo tú lo ves con su enlace, no sale en el blog ni en Google. ENCENDIDO = publicado: aparece en integrolabs.lat/blog. Después de cambiarlo, dale Guardar." }
       - { label: "Título", name: title, widget: string,
           hint: "Idealmente con la palabra clave principal. Entre 50 y 65 caracteres." }
       - { label: "Descripción", name: description, widget: text,
@@ -45,6 +48,4 @@ collections:
           hint: "Ej.: Atención por WhatsApp, Automatización, IA para equipos" }
       - { label: "Imagen de portada", name: image, widget: image, required: false }
       - { label: "Texto alternativo de la portada", name: imageAlt, widget: string, required: false }
-      - { label: "Borrador", name: draft, widget: boolean, default: true,
-          hint: "Activado: el artículo se puede revisar en su enlace, pero no aparece en el blog ni en Google. Desactívalo para publicarlo." }
       - { label: "Contenido", name: body, widget: markdown }
