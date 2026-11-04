@@ -1,0 +1,28 @@
+---
+layout: base.njk
+title: Blog
+description: Artículos prácticos sobre inteligencia artificial, automatización y atención por WhatsApp para empresas en Venezuela y Latinoamérica.
+permalink: /blog/
+---
+<section class="blog-hero">
+  <p class="blog-eyebrow">Blog de IntegroLabs</p>
+  <h1 class="blog-hero__title">IA aplicada a negocios reales.</h1>
+  <p class="blog-hero__lead">{{ description }}</p>
+</section>
+
+<section class="blog-list" aria-label="Artículos">
+  {% for post in collections.posts %}
+  <a class="blog-card" href="{{ post.url }}">
+    <p class="blog-card__meta">
+      {% if post.data.category %}<span class="blog-card__cat">{{ post.data.category }}</span> · {% endif %}
+      <time datetime="{{ post.date | fechaISO }}">{{ post.date | fechaLarga }}</time>
+      {% if post.data.draft %} · <span class="blog-card__draft">Borrador</span>{% endif %}
+    </p>
+    <h2 class="blog-card__title">{{ post.data.title }}</h2>
+    {% if post.data.description %}<p class="blog-card__desc">{{ post.data.description }}</p>{% endif %}
+    <span class="blog-card__more">Leer artículo →</span>
+  </a>
+  {% else %}
+  <p class="blog-empty">Pronto publicaremos los primeros artículos.</p>
+  {% endfor %}
+</section>

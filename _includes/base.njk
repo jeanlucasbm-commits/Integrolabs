@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }}{% if title != site.name %} — {{ site.name }}{% endif %}</title>
+<meta name="description" content="{{ description }}">
+<link rel="canonical" href="{{ page.url | absoluta }}">
+{% if draft %}<meta name="robots" content="noindex">{% endif %}
+
+<!-- Open Graph / redes -->
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:locale" content="es_LA">
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ page.url | absoluta }}">
+<meta property="og:image" content="{{ (image or '/assets/logo-integrolabs.png') | absoluta }}">
+<meta name="twitter:card" content="{% if image %}summary_large_image{% else %}summary{% endif %}">
+
+<link rel="icon" type="image/png" href="/assets/logo-integrolabs.png">
+<link rel="apple-touch-icon" href="/assets/logo-integrolabs.png">
+
+<script>
+  document.documentElement.classList.add("js");
+  /* Tema: la versión oficial es la clara; solo se usa la oscura si la persona la eligió. Se aplica antes de pintar. */
+  var theme = "light";
+  try { if (localStorage.getItem("il-theme") === "dark") theme = "dark"; } catch (e) {}
+  if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/sections.css">
+<link rel="stylesheet" href="/css/blog.css">
+{% if jsonLd %}<script type="application/ld+json">{{ jsonLd | dump | safe }}</script>{% endif %}
+</head>
+<body class="page-blog">
+
+<div class="grain" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ============ NAV (mismo menú del sitio + Blog) ============ -->
+<header class="nav" id="nav">
+  <div class="nav__capsule">
+    <a href="/" class="nav__logo" aria-label="IntegroLabs — inicio">
+      <img src="/assets/logo-integrolabs.png" alt="IntegroLabs" height="28" width="28">
+      <span class="nav__logo-text">IntegroLabs</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Navegación principal">
+      <a href="/#soluciones">Soluciones</a>
+      <a href="/#solucion">Método</a>
+      <a href="/paginas-web">Páginas web</a>
+      <a href="/blog/" class="is-current" aria-current="page">Blog</a>
+      <a href="/#equipo">Equipo</a>
+    </nav>
+
+    <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navPanel">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a href="#" class="nav__cta js-wa-cta" target="_blank" rel="noopener">Cuéntanos tu caso</a>
+  </div>
+
+  <nav class="nav__panel" id="navPanel" aria-label="Menú móvil">
+    <a href="/#soluciones">Soluciones</a>
+    <a href="/#solucion">Método</a>
+    <a href="/paginas-web">Páginas web</a>
+    <a href="/blog/" class="is-current" aria-current="page">Blog</a>
+    <a href="/#equipo">Equipo</a>
+  </nav>
+</header>
+
+<main id="top" class="blog-main">
+{{ content | safe }}
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <img src="/assets/logo-integrolabs.png" alt="IntegroLabs" height="30" width="30">
+      <span>IntegroLabs</span>
+    </div>
+
+    <div class="footer__contact">
+      <a href="https://wa.me/584220140873" target="_blank" rel="noopener" class="footer__whatsapp">
+        +58 422-014-0873
+      </a>
+      <a href="https://instagram.com/integrolabs" target="_blank" rel="noopener">@integrolabs</a>
+    </div>
+
+    <p class="footer__copy">
+      © <span id="year"></span> IntegroLabs. Todos los derechos reservados.
+      · <a href="/blog/" class="footer__legal">Blog</a>
+      · <a href="/legal" target="_blank" rel="noopener" class="footer__legal">Política de datos y cookies</a>
+    </p>
+  </div>
+</footer>
+
+<!-- ============ SELECTOR DE VERSIÓN: clara / oscura ============ -->
+<div class="theme-switch" id="themeSwitch" role="group" aria-label="Versión del sitio">
+  <button type="button" class="theme-switch__btn" data-theme-set="light" aria-pressed="false">
+    <i data-icon="sun" data-size="15"></i><span>Versión clara</span>
+  </button>
+  <button type="button" class="theme-switch__btn" data-theme-set="dark" aria-pressed="true">
+    <i data-icon="moon" data-size="15"></i><span>Versión oscura</span>
+  </button>
+</div>
+
+<script src="/js/icons.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

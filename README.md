@@ -75,3 +75,41 @@ respuestas y abre `https://wa.me/...`. El número vive en la constante
 Colores, tipografía y espaciados están como variables CSS en `:root`
 (`css/styles.css`). El acento de marca es `--color-accent`; el tema claro lo
 redefine en `html[data-theme="light"]`. Los botones son redondos (`999px`).
+
+## Blog (Eleventy + Sveltia CMS)
+
+El sitio sigue siendo HTML estático; solo el blog se genera con
+[Eleventy](https://www.11ty.dev/). Las páginas existentes (`index.html`,
+`paginas-web.html`, `legal.html`) se copian **tal cual** al sitio final.
+
+```
+blog/
+├── index.njk               ← listado /blog/
+└── posts/
+    ├── posts.11tydata.js   ← layout, URL (/blog/<archivo>/) y borradores
+    └── *.md                ← un archivo por artículo
+_includes/
+├── base.njk                ← menú, pie y selector de tema (igual al sitio)
+└── post.njk                ← plantilla del artículo + llamada a WhatsApp
+admin/                      ← panel del blog en /admin/ (Sveltia CMS)
+css/blog.css                ← estilos de lectura
+sitemap.njk, robots.txt     ← SEO
+```
+
+**Escribir desde el panel:** entrar a `https://www.integrolabs.lat/admin/`,
+iniciar sesión con GitHub (token personal con permiso sobre este repo) y
+crear el artículo. Al guardar se hace un commit en `main` y Vercel publica.
+
+**Borradores:** con el campo *Borrador* activado (`draft: true`), el artículo
+se ve en local y en las previews de Vercel, pero no en producción ni en el
+sitemap. Para publicarlo, desactivar *Borrador* y guardar.
+
+**Trabajar en local:**
+
+```bash
+npm install
+npm start      # http://localhost:8080 con recarga automática
+npm run build  # genera _site/
+```
+
+Vercel usa `npm run build` y publica `_site/` (ver `vercel.json`).

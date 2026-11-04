@@ -1,0 +1,50 @@
+# Configuración del panel del blog (Sveltia CMS) — https://integrolabs.lat/admin/
+# Cada artículo se guarda como un archivo .md en blog/posts/ del repositorio.
+# Al guardar, el panel hace un commit en la rama main y Vercel republica el sitio.
+
+backend:
+  name: github
+  repo: jeanlucasbm-commits/Integrolabs
+  branch: main
+  commit_messages:
+    create: "Blog: nuevo artículo «{{slug}}»"
+    update: "Blog: actualiza «{{slug}}»"
+    delete: "Blog: elimina «{{slug}}»"
+    uploadMedia: "Blog: sube imagen {{path}}"
+    deleteMedia: "Blog: elimina imagen {{path}}"
+
+site_url: https://www.integrolabs.lat
+display_url: https://www.integrolabs.lat
+logo_url: /assets/logo-integrolabs.png
+locale: es
+
+# Imágenes que se suben desde el panel
+media_folder: assets/blog
+public_folder: /assets/blog
+
+collections:
+  - name: posts
+    label: Artículos
+    label_singular: Artículo
+    folder: blog/posts
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    preview_path: "blog/{{slug}}/"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: [date, title]
+    fields:
+      - { label: "Título", name: title, widget: string,
+          hint: "Idealmente con la palabra clave principal. Entre 50 y 65 caracteres." }
+      - { label: "Descripción", name: description, widget: text,
+          hint: "Aparece en Google y al compartir el enlace. Entre 120 y 160 caracteres." }
+      - { label: "Fecha", name: date, widget: datetime, time_format: false, date_format: "YYYY-MM-DD", format: "YYYY-MM-DD" }
+      - { label: "Autor", name: author, widget: select, options: ["Jean Lucas Bello", "Juan Manuel Chacin"], default: "Jean Lucas Bello" }
+      - { label: "Categoría", name: category, widget: string, required: false,
+          hint: "Ej.: Atención por WhatsApp, Automatización, IA para equipos" }
+      - { label: "Imagen de portada", name: image, widget: image, required: false }
+      - { label: "Texto alternativo de la portada", name: imageAlt, widget: string, required: false }
+      - { label: "Borrador", name: draft, widget: boolean, default: true,
+          hint: "Mientras esté activado, el artículo solo se ve en las previews, no en integrolabs.lat." }
+      - { label: "Contenido", name: body, widget: markdown }

@@ -1,0 +1,13 @@
+{
+  "name": "integrolabs-site",
+  "private": true,
+  "description": "Sitio de IntegroLabs: páginas estáticas + blog generado con Eleventy y editado desde /admin (Sveltia CMS).",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  },
+  "type": "module"
+}

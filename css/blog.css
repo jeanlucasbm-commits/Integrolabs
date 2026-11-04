@@ -1,0 +1,108 @@
+/* ==========================================================================
+   IntegroLabs — Blog (/blog y /blog/<artículo>)
+   Se carga después de styles.css y sections.css: reutiliza sus tokens
+   (colores, tipografía, botones, menú, pie y tema claro/oscuro) y solo añade
+   la maqueta de lectura.
+   ========================================================================== */
+
+.blog-main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 150px var(--section-pad-x) 120px;
+}
+
+.blog-eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 12.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.blog-eyebrow::before { content: ""; width: 16px; height: 1px; background: var(--color-accent); }
+
+/* ---------- Índice ---------- */
+.blog-hero__title {
+  margin-top: 18px;
+  font-size: clamp(34px, 5.4vw, 60px); font-weight: 500; line-height: 1.04; letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.blog-hero__lead { margin-top: 20px; font-size: 17px; line-height: 1.65; color: var(--text-secondary); max-width: 56ch; }
+
+.blog-list { margin-top: 64px; border-top: 1px solid var(--line-soft); }
+.blog-card {
+  display: block; padding: 32px 0;
+  border-bottom: 1px solid var(--line-soft);
+  transition: border-color 0.2s ease;
+}
+.blog-card:hover { border-bottom-color: var(--line-strong); }
+.blog-card__meta { font-size: 13px; color: var(--text-tertiary); }
+.blog-card__cat { color: var(--color-accent); }
+.blog-card__draft { color: var(--danger); }
+.blog-card__title {
+  margin-top: 10px;
+  font-size: clamp(22px, 2.8vw, 28px); font-weight: 500; line-height: 1.2; letter-spacing: -0.02em;
+  text-wrap: balance; transition: color 0.2s ease;
+}
+.blog-card:hover .blog-card__title { color: var(--color-accent); }
+.blog-card__desc { margin-top: 10px; font-size: 15.5px; line-height: 1.65; color: var(--text-secondary); }
+.blog-card__more { display: inline-block; margin-top: 16px; font-size: 13.5px; font-weight: 500; color: var(--color-accent); }
+.blog-empty { padding: 40px 0; color: var(--text-secondary); }
+
+/* ---------- Artículo ---------- */
+.post__back { font-size: 13px; color: var(--text-secondary); }
+.post__back:hover { color: var(--text-primary); }
+.post__draft {
+  margin-top: 20px; display: block; width: fit-content; padding: 6px 12px;
+  font-size: 12.5px; color: var(--danger); border: 1px solid currentColor;
+}
+.post__head .blog-eyebrow { margin-top: 28px; }
+.post__title {
+  margin-top: 16px;
+  font-size: clamp(32px, 4.8vw, 50px); font-weight: 500; line-height: 1.08; letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.post__lead { margin-top: 18px; font-size: 18px; line-height: 1.6; color: var(--text-secondary); }
+.post__meta {
+  margin-top: 24px; padding-bottom: 28px; border-bottom: 1px solid var(--line-soft);
+  font-size: 13px; color: var(--text-tertiary);
+}
+
+.post__cover { margin-top: 36px; }
+.post__cover img { display: block; width: 100%; height: auto; }
+
+/* Texto del artículo (lo que sale del editor / Markdown) */
+.post__body { margin-top: 40px; }
+.post__body > * + * { margin-top: 20px; }
+.post__body p, .post__body li { font-size: 17px; line-height: 1.75; color: var(--text-secondary); }
+.post__body h2 {
+  margin-top: 52px; font-size: clamp(22px, 2.8vw, 28px); font-weight: 500; line-height: 1.2; letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+.post__body h3 { margin-top: 36px; font-size: 19px; font-weight: 500; color: var(--text-primary); }
+.post__body strong { color: var(--text-primary); font-weight: 500; }
+.post__body a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
+.post__body ul, .post__body ol { padding-left: 22px; }
+.post__body ul { list-style: disc; }
+.post__body ol { list-style: decimal; }
+.post__body li + li { margin-top: 8px; }
+.post__body li::marker { color: var(--color-accent); }
+.post__body blockquote {
+  padding: 4px 0 4px 20px; border-left: 2px solid var(--color-accent);
+}
+.post__body blockquote p { color: var(--text-primary); font-size: 18px; }
+.post__body img { display: block; max-width: 100%; height: auto; margin: 32px 0; }
+.post__body hr { border: 0; border-top: 1px solid var(--line-soft); margin: 48px 0; }
+.post__body code {
+  font-size: 0.9em; padding: 2px 6px; background: var(--fill-subtle-strong);
+}
+.post__body table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.post__body th, .post__body td { padding: 10px 12px; border-bottom: 1px solid var(--line-soft); text-align: left; }
+.post__body th { color: var(--text-primary); font-weight: 500; }
+
+/* Cierre con llamada a la acción */
+.post__cta {
+  margin-top: 72px; padding: 32px;
+  border: 1px solid var(--line-strong);
+  background: var(--fill-subtle);
+}
+.post__cta-title { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; color: var(--text-primary); }
+.post__cta-text { margin-top: 10px; font-size: 15.5px; line-height: 1.65; color: var(--text-secondary); }
+.post__cta .btn { margin-top: 22px; display: inline-flex; }
