@@ -75,7 +75,15 @@
     border-top: 1px solid var(--line-soft); font-size: 12px; color: var(--text-tertiary);
   }
 </style>
-<script src="js/analytics.js" async></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D7EZXSZ0R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4D7EZXSZ0R');
+</script>
 </head>
 <body>
 
@@ -92,7 +100,7 @@
 <main class="legal-main">
   <p class="legal-eyebrow">Legal</p>
   <h1>Política de datos y cookies</h1>
-  <p class="legal-updated">Última actualización: septiembre de 2026.</p>
+  <p class="legal-updated">Última actualización: noviembre de 2026.</p>
 
   <nav class="legal-toc" aria-label="Contenido de esta página">
     <a href="#datos">Política de datos</a>
@@ -115,7 +123,7 @@
       <li>Tus respuestas sobre qué te está costando más tiempo o dinero hoy, y cómo vendes actualmente.</li>
     </ul>
     <p>
-      No usamos cookies de análisis ni de seguimiento para recopilar esta información
+      Las respuestas del formulario no se registran en herramientas de análisis
       (ver <a href="#cookies">Política de cookies</a> más abajo).
     </p>
 
@@ -169,14 +177,27 @@
   <section class="legal-section" id="cookies">
     <h2>Política de cookies</h2>
     <p>
-      Este sitio <strong>no instala cookies propias</strong> de seguimiento, análisis ni
-      publicidad. No usamos Google Analytics, píxeles publicitarios ni herramientas
-      similares.
+      Este sitio usa <strong>Google Analytics</strong> para entender de forma agregada cómo
+      se usa: cuántas personas lo visitan, desde qué país y tipo de dispositivo, qué páginas
+      y artículos leen y de dónde llegan. Para eso, Google Analytics instala cookies en tu
+      navegador (por ejemplo, <code>_ga</code>) que permiten distinguir visitas sin que sepamos
+      quién eres.
+    </p>
+    <p>
+      No usamos esta información para identificarte, no la cruzamos con tus datos de
+      contacto y no la usamos con fines publicitarios. No usamos píxeles publicitarios en este
+      sitio. Google procesa estos datos según su propia
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">política de privacidad</a>.
+    </p>
+    <p>
+      Puedes bloquear o borrar estas cookies desde la configuración de tu navegador, o
+      instalar el <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">complemento
+      de inhabilitación de Google Analytics</a>. El sitio seguirá funcionando igual.
     </p>
     <p>
       El sitio se sirve como archivos estáticos (HTML, CSS y JavaScript) y las animaciones
-      que ves se ejecutan en tu propio navegador, sin enviar datos de tu visita a
-      servidores nuestros ni de terceros con fines de rastreo.
+      que ves se ejecutan en tu propio navegador. Aparte de Google Analytics, no enviamos
+      datos de tu visita a servidores nuestros ni de terceros.
     </p>
     <p>
       Algunos elementos visuales se cargan desde redes de distribución de contenido
@@ -185,7 +206,7 @@
       para identificarte ni seguirte entre sitios.
     </p>
     <p>
-      Si en el futuro incorporamos herramientas de analítica o cookies adicionales,
+      Si en el futuro incorporamos otras herramientas de analítica o cookies adicionales,
       actualizaremos esta página para reflejarlo antes de activarlas.
     </p>
 
